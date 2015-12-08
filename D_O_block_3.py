@@ -56,6 +56,10 @@ while line < length_1:
 
         print("D", sres, eres, sep='\t')
 
+    elif(d_count >= 4 and line == length_1 - 1):
+
+        print("D", sres, line+1, sep='\t')
+
     if eres > 0:
         sres = 0
         d_count = 0
@@ -102,6 +106,11 @@ while line < length_1:
         line = eres
 
         print("O", sres, eres, sep='\t')
+
+    elif(o_count >= 4 and line == length_1 - 1):
+
+        print("O", sres, line+1, sep='\t')
+
         # print("Diag", line, o_count)
 
     if eres > 0:
