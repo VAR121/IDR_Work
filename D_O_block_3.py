@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 #Date: 2nd Dec 2015
-#Purpose: Take out Disorder Order block
+#Purpose: Extract Disorder and Order blocks
 #Input_file: Intermediate file generated from dis_bound_homo_block_msa_extraction.py (*.int)
 
 import sys
