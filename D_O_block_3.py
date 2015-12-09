@@ -21,7 +21,7 @@ eres = 0
 
 line = 0
 
-while line < length_1:
+while line < length_1:                                                # For Disordered Blocks
 
     in_file = input_lines_1[line]
     lines = in_file.strip('\n')
@@ -80,7 +80,7 @@ while line < length_1:
 
 sres = eres = line = 0
 
-while line < length_1:
+while line < length_1:                                #For Ordered Blocks
 
     in_file = input_lines_1[line]
     lines = in_file.strip('\n')
@@ -137,3 +137,6 @@ while line < length_1:
         eres = 0
 
     line += 1
+# Function for handling boundaries
+
+exit()
