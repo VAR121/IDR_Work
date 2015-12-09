@@ -115,16 +115,16 @@ while line < length_1:                                #For Ordered Blocks
 
         print("O", sres, eres, sep='\t')
 
-    elif(o_count >= 4 and line == length_1 - 1):
+    if(o_count >= 4 and line == length_1 - 1):
 	
         if lines == "O":
             eres = line + 1 
-        elif lines == "N" or "D" and((d_count == 3) or (n_count == 3) or ((d_count + n_count) == 3)) :
+        if lines == "N" or "D" and((d_count == 3) or (n_count == 3) or ((d_count + n_count) == 3)) :
             eres  = line - 2
-        elif lines == "N" or "D" and((d_count == 2) or (n_count == 2) or ((d_count + n_count) == 2)) :
+        if lines == "N" or "D" and((d_count == 2) or (n_count == 2) or ((d_count + n_count) == 2)) :
             eres = line - 1      
-        elif lines == "N" or "D" and ((d_count == 1) or (n_count == 1) or ((d_count + n_count) == 1)) :
-            eres == line
+        if lines == "N" or "D" and ((d_count == 1) or (n_count == 1) or ((d_count + n_count) == 1)):
+            eres = line
         print("O", sres, eres, sep='\t')
 
         # print("Diag", line, o_count)
