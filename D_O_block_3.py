@@ -58,7 +58,15 @@ while line < length_1:
 
     elif(d_count >= 4 and line == length_1 - 1):
 
-        print("D", sres, line+1, sep='\t')
+        if lines == "D":
+            eres = line + 1 
+        elif lines == "N" or "O" and((o_count == 3) or (n_count == 3) or ((o_count + n_count) == 3)) :
+            eres  = line - 2
+        elif lines == "N" or "O" and((o_count == 2) or (n_count == 2) or ((o_count + n_count) == 2)) :
+            eres = line - 1      
+        elif lines == "N" or "O" and ((o_count == 1) or (n_count == 1) or ((o_count + n_count) == 1)) :
+            eres == line
+        print("D", sres, eres, sep='\t')
 
     if eres > 0:
         sres = 0
@@ -108,8 +116,16 @@ while line < length_1:
         print("O", sres, eres, sep='\t')
 
     elif(o_count >= 4 and line == length_1 - 1):
-
-        print("O", sres, line+1, sep='\t')
+	
+        if lines == "O":
+            eres = line + 1 
+        elif lines == "N" or "D" and((d_count == 3) or (n_count == 3) or ((d_count + n_count) == 3)) :
+            eres  = line - 2
+        elif lines == "N" or "D" and((d_count == 2) or (n_count == 2) or ((d_count + n_count) == 2)) :
+            eres = line - 1      
+        elif lines == "N" or "D" and ((d_count == 1) or (n_count == 1) or ((d_count + n_count) == 1)) :
+            eres == line
+        print("O", sres, eres, sep='\t')
 
         # print("Diag", line, o_count)
 
