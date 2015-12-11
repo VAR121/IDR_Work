@@ -4,6 +4,7 @@
 #Input_file: Intermediate file generated from dis_bound_homo_block_msa_extraction.py (*.int)
 
 import sys
+import pprint
 
 in_1 = sys.argv[1]
 
@@ -20,6 +21,7 @@ n_count = 0
 eres = 0
 
 line = 0
+D_position_list = []
 
 while line < length_1:                                                # For Disordered Blocks
 
@@ -56,6 +58,11 @@ while line < length_1:                                                # For Diso
 
         print("D", sres, eres, sep='\t')
 
+        a = list(range(sres,(eres+1)))       
+    
+        D_position_list = (D_position_list + a)
+        
+
     elif(d_count >= 4 and line == length_1 - 1):
 
         if lines == "D":
@@ -66,7 +73,12 @@ while line < length_1:                                                # For Diso
             eres = line - 1      
         elif lines == "N" or "O" and ((o_count == 1) or (n_count == 1) or ((o_count + n_count) == 1)) :
             eres == line
+
         print("D", sres, eres, sep='\t')
+        
+        a = list(range(sres,(eres+1)))
+
+        D_position_list = (D_position_list + a)
 
     if eres > 0:
         sres = 0
@@ -76,20 +88,23 @@ while line < length_1:                                                # For Diso
         eres = 0
 
     line += 1
-
+#print(D_position_list)
 
 sres = eres = line = 0
 
-while line < length_1:                                #For Ordered Blocks
-
+while line < length_1:         
+                                                                     #For Ordered Blocks
     in_file = input_lines_1[line]
     lines = in_file.strip('\n')
-
+        
     if lines == "O":
-
+     
         if o_count == 0:
-            sres = line + 1  # Starting boundary
-
+                sres = line + 1  # Starting boundary
+                if sres in D_position_list [:]:
+                    sres = 0
+                    line +=1
+                    continue        
         o_count += 1
 
         if n_count < 4:
@@ -111,6 +126,8 @@ while line < length_1:                                #For Ordered Blocks
             continue
 
         eres = (line - 3)
+        if eres in  D_position_list [:]:
+            eres = (line - 5)
         line = eres
 
         print("O", sres, eres, sep='\t')
