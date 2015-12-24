@@ -30,12 +30,14 @@ for i in range(0, len(inp_1)):
 
             if(others == threshold):
                 end = i + 1
-                print ("D", start, end)
-                In_D = False
-                start = 0
-                continue
+                if(end - start >= threshold):
+                    print ("D", start, end)
+                    In_D = False
+                    start = 0
+                    continue
         else:
             end = len(inp_1)
+            print("D", start, end)
             break
 
     if(inp_1[i] == "O" and not In_D):
@@ -53,17 +55,13 @@ for i in range(0, len(inp_1)):
 
             if (others == threshold):
                 end = i + 1
-                print("O", start, end)
-                In_O = False
-                start = 0
-                continue
+                if(end - start >= threshold):
+                    print("O", start, end)
+                    In_O = False
+                    start = 0
+                    continue
         else:
             end = len(inp_1)
+            print("O", start, end)
             break
-
-
-if (In_D):
-    print("D", start, end)
-else:
-    print("O", start, end)
 exit(0)
